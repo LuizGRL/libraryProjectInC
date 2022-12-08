@@ -41,7 +41,7 @@ namespace VirtualLibrary.Repositories
             {
                 return Fluently.Configure().Database(PostgreSQLConfiguration.Standard.ConnectionString("User Id=postgres;Password=123;Host=localHost;Port=5432;DataBase=testeDB"))
                     .Mappings(m => m.FluentMappings.AddFromAssemblyOf<Program>())
-                    .ExposeConfiguration(cfg=>new SchemaExport(cfg).Execute(false,true,false ))
+                    .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(true, true)) // usando o SchemaUpdate ele não vai dropar os dados da tabela 
                     .BuildSessionFactory();
             }
             catch (Exception e)
