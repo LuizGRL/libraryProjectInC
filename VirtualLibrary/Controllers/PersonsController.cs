@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VirtualLibrary.Interfaces;
 using VirtualLibrary.Models.Entitys;
 using VirtualLibrary.Repositories;
 
@@ -13,6 +14,7 @@ namespace VirtualLibrary.Controllers
     public class PersonsController : Controller
     {
         private readonly ISession _session;
+        private readonly IRepositoryModel<Person> _repository;
 
         public PersonsController(ISession session)
         {
@@ -36,17 +38,23 @@ namespace VirtualLibrary.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Person person)
         {
+
             if (ModelState.IsValid)
             {
-                using (ITransaction transaction = _session.BeginTransaction())
-                {
 
-
-                    await _session.SaveAsync(person);
-                    await transaction.CommitAsync();
-                    return RedirectToAction(nameof(Create));
-                }
+                    try
+                    {
+                        _repository.BeginTransaction();
+                        _repository.Add(person);
+                    }
+                    catch
+                    {
+                        
+                        _repository.RollBackTransaction();
+                    }
+                
             }
+           
             return View(person);
         }
     }
