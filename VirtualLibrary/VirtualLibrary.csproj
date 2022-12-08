@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentNHibernate" Version="3.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+    <PackageReference Include="NHibernate.Caches.SysCache" Version="5.8.0" />
+    <PackageReference Include="NHibernate.Driver.OracleManagedDataAccess" Version="1.0.0" />
+    <PackageReference Include="NHibernate.Driver.OracleManagedDataAccessCore" Version="1.0.1" />
+    <PackageReference Include="NHibernate.OracleManaged" Version="1.0.1" />
+    <PackageReference Include="NHInsights" Version="1.0.0" />
+    <PackageReference Include="Npgsql" Version="7.0.0" />
+    <PackageReference Include="Oracle.ManagedDataAccess" Version="21.8.0" />
+    <PackageReference Include="runtime.native.System.Data.SqlClient.sni" Version="4.7.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+</Project>
