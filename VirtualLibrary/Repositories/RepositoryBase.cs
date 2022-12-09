@@ -1,9 +1,11 @@
-﻿using NHibernate;
+﻿using Microsoft.AspNetCore.Mvc;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VirtualLibrary.Interfaces;
+using VirtualLibrary.Models.Entitys;
 
 namespace VirtualLibrary.Repositories
 {
@@ -92,9 +94,9 @@ namespace VirtualLibrary.Repositories
             throw new NotImplementedException();
         }
 
-        public List<T> SelectAll()
+        public List<T> ToList()
         {
-            throw new NotImplementedException();
+            return _session.Query<T>().ToList();
         }
 
         public T SelectById(params object[] var)

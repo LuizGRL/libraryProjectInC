@@ -8,24 +8,26 @@ using System.Threading.Tasks;
 using VirtualLibrary.Interfaces;
 using VirtualLibrary.Models.Entitys;
 using VirtualLibrary.Repositories;
+using VirtualLibrary.Services;
 
 namespace VirtualLibrary.Controllers
 {
     public class PersonsController : Controller
     {
-        private readonly ISession _session;
-        private readonly IRepositoryModel<Person> _repository;
 
-        public PersonsController(ISession session)
+        private readonly IPersonsService _service;
+
+
+        public PersonsController(IPersonsService service)
         {
-            _session = SessionFactory.OpenSession;
-
+            _service = service;
         }
-        public async Task<IActionResult> Index()
+
+        public IActionResult Index()
         {
 
 
-            return View(await _session.Query<Person>().ToListAsync());
+            return View(_service.ToList());
         }
 
 
@@ -38,21 +40,10 @@ namespace VirtualLibrary.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Person person)
         {
-
             if (ModelState.IsValid)
             {
-
-                    try
-                    {
-                        _repository.BeginTransaction();
-                        _repository.Add(person);
-                    }
-                    catch
-                    {
-                        
-                        _repository.RollBackTransaction();
-                    }
-                
+                _service.Add(person);
+                return RedirectToAction(nameof(Create));
             }
            
             return View(person);

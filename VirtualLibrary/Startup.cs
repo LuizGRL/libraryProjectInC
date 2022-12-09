@@ -9,7 +9,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using VirtualLibrary.Interfaces;
+using VirtualLibrary.Models.Entitys;
 using VirtualLibrary.Repositories;
+using VirtualLibrary.Services;
 
 namespace VirtualLibrary
 {
@@ -30,6 +33,9 @@ namespace VirtualLibrary
             {
                 return SessionFactory.OpenSession;
             });
+            services.AddTransient<IPersonsService, PersonsService>();
+            services.AddTransient<IRepositoryModel<Person>, RepositoryBase<Person>>();
+
             services.AddControllersWithViews();
         }
 
