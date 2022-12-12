@@ -10,5 +10,9 @@ namespace VirtualLibrary.Interfaces
     {
         public void Add(Person person);
         public List<Person> ToList();
+        public Person Edit(Person obj);
+        public Person FindById(int var);
+
+        public void Delete(int id);
     }
 }

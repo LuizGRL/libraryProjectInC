@@ -31,5 +31,23 @@ namespace VirtualLibrary.Services
         {
            return _repository.ToList();
         }
+
+        public Person Edit(Person person)
+        {
+            _repository.Edit(person);
+            return person;
+        }
+
+        public Person FindById(int var)
+        {
+            return _repository.SelectById(var);
+
+            
+        }
+
+        public void Delete(int id)
+        {
+            _repository.Remove(id);
+        }
     }
 }

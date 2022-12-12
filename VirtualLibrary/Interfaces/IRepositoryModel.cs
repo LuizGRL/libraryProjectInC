@@ -9,10 +9,10 @@ namespace VirtualLibrary.Interfaces
     public interface IRepositoryModel<T> where T : class // classe generia onde t pode ser qualquer classe 
     {
         List<T> ToList();
-        T SelectById(params object[] var);
+        T SelectById(int var);
         T Add(T obj);
         T Edit(T obj);
-        T Remove(T obj);
+        void Remove(int id);
         T RemoveById(params object[] var);
         public void CommitTransaction();
         

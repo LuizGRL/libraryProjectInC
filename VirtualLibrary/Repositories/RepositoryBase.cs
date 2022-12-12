@@ -76,12 +76,16 @@ namespace VirtualLibrary.Repositories
 
         public T Edit(T obj)
         {
-            throw new NotImplementedException();
+            _session.SaveOrUpdate(obj);
+            return obj;
+         
         }
 
-        public T Remove(T obj)
+        public void Remove(int id )
         {
-            throw new NotImplementedException();
+            var obj = SelectById(id);
+            _session.Delete(obj);
+            
         }
 
         public T RemoveById(params object[] var)
@@ -99,9 +103,9 @@ namespace VirtualLibrary.Repositories
             return _session.Query<T>().ToList();
         }
 
-        public T SelectById(params object[] var)
+        public T SelectById(int var)
         {
-            throw new NotImplementedException();
+            return _session.Get<T>(var);
         }
     }
 }
