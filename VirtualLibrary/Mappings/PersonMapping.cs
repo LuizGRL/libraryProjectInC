@@ -11,7 +11,8 @@ namespace VirtualLibrary.Mappings
     {
         public PersonMapping()
         {
-            Id(x => x.Id);
+            Table("Person");
+            Id(x => x.Id).Column("Id").GeneratedBy.Increment();
             Map(x => x.Cpf);
             Map(x => x.Email);
             Map(x => x.FullName);

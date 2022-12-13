@@ -35,6 +35,10 @@ namespace VirtualLibrary
             });
             services.AddTransient<IPersonsService, PersonsService>();
             services.AddTransient<IRepositoryModel<Person>, RepositoryBase<Person>>();
+            services.AddTransient<ICountryService,CountrysService>();
+            services.AddTransient<IRepositoryModel<Country>, RepositoryBase<Country>>();
+
+
 
             services.AddControllersWithViews();
         }
