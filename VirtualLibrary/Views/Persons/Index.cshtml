@@ -1,60 +1,73 @@
 ﻿@model IEnumerable<VirtualLibrary.Models.Entitys.Person>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Persons";
 }
 
-<h1>Index</h1>
+<h1>Persons</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <button class="create-button"><a asp-action="Create" class="create-button-text">Create New</a></button>
 </p>
+<div class="form-inline pull-right" >
+    <label>Search</label>
+    <input type="text" class="form-control" id="textSearch" />
+</div>
+<body>
+    <link rel="stylesheet" href="~/css/PersonIndex.css" />
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FullName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cpf)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BirthDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cpf)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                <a asp-controller="Persons" asp-action="Update" asp-route-Id="@item.Id" class="btn btn-outline-info btn-sm">Edit</a>
-                <form asp-controller="Persons" asp-action="Delete" asp-route-Id="@item.Id" ><button class="btn btn-outline-danger btn-sm" type="submit">Delete</button></form>
+    <div class="table-div">
 
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+
+        <table class="table">
+            <thead>
+                <tr class="line-table">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FullName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Cpf)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BirthDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr style='background-color: @(item.Id % 2 == 0 ? "#ccdbfd" : "#c1d3fe");'>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cpf)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BirthDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            <a asp-controller="Persons" asp-action="Update" asp-route-Id="@item.Id" class="btn btn-outline-info btn-sm">Edit</a> &empty;
+                            <form asp-controller="Persons" asp-action="Delete" asp-route-Id="@item.Id"><button class="btn btn-outline-danger btn-sm" type="submit">Delete</button></form>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>

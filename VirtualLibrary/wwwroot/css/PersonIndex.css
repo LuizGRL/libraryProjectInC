@@ -1,0 +1,27 @@
+﻿body {
+}
+.table{
+    border:solid;
+
+    
+}
+.text-title {
+
+}
+.line-table {
+    background-color: #abc4ff;
+    border:solid;
+}
+.create-button {
+    background-color: #168aad;
+    border: none;
+    color: whitesmoke;
+
+}
+.create-button-text{
+    color:snow;
+}
+.create-button:hover {
+    background-color: skyblue;
+}
+ 

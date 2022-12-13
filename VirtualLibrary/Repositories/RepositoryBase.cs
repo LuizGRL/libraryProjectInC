@@ -106,6 +106,6 @@ namespace VirtualLibrary.Repositories
         public T SelectById(int var)
         {
             return _session.Get<T>(var);
-        }
+        } 
     }
 }
