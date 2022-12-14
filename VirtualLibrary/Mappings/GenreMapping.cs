@@ -14,6 +14,7 @@ namespace VirtualLibrary.Mappings
             Table("Genre");
             Id(x => x.Id).Column("Id").GeneratedBy.Increment();
             Map(x => x.Name);
+            HasManyToMany(x => x.Books).Cascade.All().Inverse().Table("Book_Genre");
         }
         
     }

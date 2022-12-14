@@ -11,6 +11,8 @@ namespace VirtualLibrary.Models.Entitys
         public virtual int Id { get; set; }
         public virtual String Name { get; set; }
         public virtual List<Pseudonym> Pseudonyms { get; set; }
+           
+        public virtual List<Book> Books { get; set; }
 
 
     }
