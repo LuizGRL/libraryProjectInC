@@ -6,7 +6,6 @@ using FluentNHibernate;
 using NHibernate;
 using System.Text;
 using FluentNHibernate.Cfg;
-using OracleInternal;
 using FluentNHibernate.Cfg.Db;
 using System.Configuration;
 using NHibernate.Tool.hbm2ddl;

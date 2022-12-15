@@ -10,17 +10,16 @@
     <button class="create-button"><a asp-action="Create" class="create-button-text">Create New</a></button>
 </p>
 <div class="form-inline pull-right" >
-    <label>Search</label>
-    <input type="text" class="form-control" id="textSearch" />
+    <input type="text" class="form-control" id="Search" class="form-control" />
 </div>
 <body>
-    <link rel="stylesheet" href="~/css/PersonIndex.css" />
+    <link rel="stylesheet" href="~/css/index.css" />
 
     <div class="table-div">
 
 
 
-        <table class="table">
+        <table class="table" id="personsTable">
             <thead>
                 <tr class="line-table">
                     <th>
@@ -48,7 +47,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Id)
                         </td>
-                        <td>
+                        <td id="nameTd">
                             @Html.DisplayFor(modelItem => item.FullName)
                         </td>
                         <td>
@@ -69,5 +68,29 @@
                 }
             </tbody>
         </table>
+        @section Scripts{ 
+        <script type="text/javascript"></script>
+        <script>
+            $('#Search').keyup(function () {
+                var searchItem = $('#Search').val();
+                if (searchItem == '' || searchItem == null || searchItem == undefined) {
+                    $('#personsTable tbody tr').show();
+                } else {
+                    searchItem = searchItem.toLowerCase();
+                    $('#personsTable tbody tr').hide();
+                    $('#personsTable tbody tr').each(function () {
+                        $row = $(this);
+                        var name = $row.find('td:eq(1)').text().toLowerCase();
+                        if (name.indexOf(searchItem) >-1) {
+                            $(this).show();
+
+                        } else { $(this).hide(); }
+                    });
+                }
+            });
+            
+     
+        </script>
+        }
     </div>
 </body>

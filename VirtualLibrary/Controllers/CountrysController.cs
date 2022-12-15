@@ -36,5 +36,32 @@ namespace VirtualLibrary.Controllers
 
             return View(country);
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Update(int id)
+        {
+            return View(_service.FindById(id));
+        }
+        [HttpPost]
+        public async Task<IActionResult> Update(Country country, int id)
+        {
+            if (id != country.Id)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                _service.Edit(country);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(country);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            _service.Delete(id);
+            return (RedirectToAction(nameof(Index)));
+        }
     }
 }

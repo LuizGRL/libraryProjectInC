@@ -37,7 +37,8 @@ namespace VirtualLibrary
             services.AddTransient<IRepositoryModel<Person>, RepositoryBase<Person>>();
             services.AddTransient<ICountryService,CountrysService>();
             services.AddTransient<IRepositoryModel<Country>, RepositoryBase<Country>>();
-
+            services.AddTransient<IStateService, StatesService>();
+            services.AddTransient<IRepositoryModel<State>, RepositoryBase<State>>();
 
 
             services.AddControllersWithViews();

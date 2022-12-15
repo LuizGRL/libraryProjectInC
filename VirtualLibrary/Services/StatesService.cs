@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,18 +7,17 @@ using VirtualLibrary.Models.Entitys;
 
 namespace VirtualLibrary.Services
 {
-    public class CountrysService : ICountryService
+    public class StatesService : IStateService
     {
-        private IRepositoryModel<Country> _repository;
+        IRepositoryModel<State> _repository;
 
-        public CountrysService(IRepositoryModel<Country> Repository)
+        public StatesService(IRepositoryModel<State> Repository)
         {
             _repository = Repository;
         }
-        public void Add(Country country)
-
+        public void Add(State state)
         {
-            _repository.Add(country);
+            _repository.Add(state);
         }
 
         public void Delete(int id)
@@ -27,18 +25,17 @@ namespace VirtualLibrary.Services
             _repository.Remove(id);
         }
 
-        public Country Edit(Country country)
+        public State Edit(State state)
         {
-           return _repository.Edit(country);
-           
+            return _repository.Edit(state);
         }
 
-        public Country FindById(int id)
+        public State FindById(int id)
         {
             return _repository.SelectById(id);
         }
 
-        public List<Country> ToList()
+        public List<State> ToList()
         {
             return _repository.ToList();
         }

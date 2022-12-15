@@ -24,4 +24,7 @@
 .create-button:hover {
     background-color: skyblue;
 }
+.tdbody{
+    width:fit-content;
+}
  
